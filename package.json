@@ -1,0 +1,14 @@
+{
+  "name": "static-version-injection-html-webpack-plugin",
+  "version": "0.0.1",
+  "description": "this is a pulgin for webpack,using along with html-webpack-plugin,to add a content related hash version string when inject script or link tags into a html file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "md5": "^2.2.1"
+  }
+}
