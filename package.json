@@ -1,13 +1,19 @@
 {
   "name": "static-version-injection-html-webpack-plugin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "this is a pulgin for webpack,using along with html-webpack-plugin,to add a content related hash version string when inject script or link tags into a html file",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": "https://github.com/Kat5ura/static-version-injection-html-webpack-plugin",
-  "keywords": ["html-webpack-lugin", "static-version-injection", "hash", "md5", "version"],
+  "keywords": [
+    "html-webpack-lugin",
+    "static-version-injection",
+    "hash",
+    "md5",
+    "version"
+  ],
   "author": "Kat5ura",
   "license": "MIT",
   "devDependencies": {
