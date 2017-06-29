@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "repository": "https://github.com/Kat5ura/static-version-injection-html-webpack-plugin",
+  "keywords": ["html-webpack-lugin", "static-version-injection", "hash", "md5", "version"],
+  "author": "Kat5ura",
   "license": "MIT",
   "devDependencies": {
     "md5": "^2.2.1"

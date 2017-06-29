@@ -1,6 +1,8 @@
 Add file version after the assets` src for the HTML Webpack Plugin
 ========================================
 
+[![npm version](https://badge.fury.io/js/static-version-injection-html-webpack-plugin.svg)](https://badge.fury.io/js/static-version-injection-html-webpack-plugin)
+
 This plugin allows you to add a version string for each static asset in the output from html-webpack-plugin.
 
 Installation
