@@ -4,7 +4,7 @@ var md5 = require('md5');
 
 function StaticVersionInjectionWebpackPlugin(options) {
     // Configure your plugin with options...
-    var options = options || {};
+    options = options || {};
     this.md5 = options.md5 || false;
 }
 
@@ -16,9 +16,9 @@ StaticVersionInjectionWebpackPlugin.prototype.apply = function (compiler) {
     var hashMap = {};
     var pathMap = {};
 
-    compiler.plugin('done', function(compilation) {
+    compiler.plugin('done', function (compilation) {
         for (var oldPath in pathMap) {
-            fs.rename(oldPath, pathMap[oldPath], function(err) {
+            fs.rename(oldPath, pathMap[oldPath], function (err) {
                 if (err) console.log(err);
             });
         }
@@ -58,7 +58,6 @@ StaticVersionInjectionWebpackPlugin.prototype.apply = function (compiler) {
                     hashMap[fileName] = hash;
                 }
             });
-
             return thunks;
         });
 
@@ -74,10 +73,10 @@ StaticVersionInjectionWebpackPlugin.prototype.apply = function (compiler) {
                 if (len && arr[len - 1]) {
                     var fileName = arr[len - 1];
                     var nameArr = fileName.split('.');
+                    var hash = hashMap[fileName];
                     if (nameArr.length >= 3) {
                         var name = nameArr[0];
                         var exts = 'js';
-                        var hash = nameArr[1];
                         var oldPath = outputPath + '/' + cur;
                         arr[len - 1] = name + '.' + exts;
                         var newPath = outputPath + '/' + arr.join('/');
@@ -85,7 +84,7 @@ StaticVersionInjectionWebpackPlugin.prototype.apply = function (compiler) {
                         pathMap[oldPath] = newPath;
                         pathMap[oldPath + '.map'] = newPath + '.map';
                     } else if (nameArr.length === 2) {
-                        arr[len - 1] = fileName + '?v=' + hashMap[fileName];
+                        arr[len - 1] = fileName + '?v=' + hash;
                     }
                     cur = arr.join('/');
                 }
@@ -98,11 +97,11 @@ StaticVersionInjectionWebpackPlugin.prototype.apply = function (compiler) {
                     len = arr.length;
                 if (len && arr[len - 1]) {
                     var fileName = arr[len - 1];
+                    var hash = hashMap[fileName];
                     var nameArr = fileName.split('.');
                     if (nameArr.length >= 3) {
                         var name = nameArr[0];
                         var exts = 'css';
-                        var hash = nameArr[1];
                         var oldPath = outputPath + '/' + cur;
                         arr[len - 1] = name + '.' + exts;
                         var newPath = outputPath + '/' + arr.join('/');
@@ -110,7 +109,7 @@ StaticVersionInjectionWebpackPlugin.prototype.apply = function (compiler) {
                         pathMap[oldPath] = newPath;
                         pathMap[oldPath + '.map'] = newPath + '.map';
                     } else if (nameArr.length === 2) {
-                        arr[len - 1] = fileName + '?v=' + hashMap[fileName];
+                        arr[len - 1] = fileName + '?v=' + hash;
                     }
                     cur = arr.join('/');
                 }
