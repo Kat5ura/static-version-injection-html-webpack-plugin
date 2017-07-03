@@ -4,6 +4,7 @@ var md5 = require('md5');
 
 function StaticVersionInjectionWebpackPlugin(options) {
     // Configure your plugin with options...
+    var options = options || {};
     this.md5 = options.md5 || false;
 }
 
@@ -14,6 +15,14 @@ StaticVersionInjectionWebpackPlugin.prototype.apply = function (compiler) {
 
     var hashMap = {};
     var pathMap = {};
+
+    compiler.plugin('done', function(compilation) {
+        for (var oldPath in pathMap) {
+            fs.rename(oldPath, pathMap[oldPath], function(err) {
+                if (err) console.log(err);
+            });
+        }
+    });
 
     compiler.plugin('compilation', function (compilation) {
 
